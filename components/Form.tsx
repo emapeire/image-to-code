@@ -4,7 +4,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 
-export function Form() {
+export function Form({ transformUrlToCode }: { transformUrlToCode: (url: string) => void }) {
 	return (
 		<form
 			className="flex flex-col gap-4"
@@ -12,7 +12,8 @@ export function Form() {
 				event.preventDefault()
 				const form = event.currentTarget as HTMLFormElement
 				const url = form.elements.namedItem('url') as HTMLInputElement
-				console.log(url.value)
+
+				transformUrlToCode(url.value)
 			}}
 		>
 			<Label htmlFor="url">Put your image url here</Label>

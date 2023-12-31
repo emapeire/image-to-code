@@ -1,29 +1,9 @@
+'use client'
+
 import { Form } from '@/components/Form'
+import { transformUrlToCode } from '@/lib/transformUrlToCode'
 
 export default function Home() {
-	const transformUrlToCode = async (url: string) => {
-		const res = await fetch('/api/generate-code-from-image', {
-			method: 'POST',
-			body: JSON.stringify({ url }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-		if (!res.ok || res.body === null) {
-			throw new Error('Something went wrong')
-		}
-
-		const reader = res.body.getReader()
-		const decoder = new TextDecoder('utf-8')
-
-		while (true) {
-			const { done, value } = await reader.read()
-			const chunk = decoder.decode(value)
-			console.log(chunk)
-			if (done) break
-		}
-	}
-
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
 			<aside className="flex flex-col justify-between min-h-screen p-4 bg-gray-900">
@@ -51,7 +31,7 @@ export default function Home() {
 
 			<main className="">
 				<section className="max-w-2xl mx-auto p-10">
-					<Form />
+					<Form transformUrlToCode={transformUrlToCode} />
 				</section>
 			</main>
 		</div>
