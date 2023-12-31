@@ -1,5 +1,6 @@
 import OpenAI from 'openai'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
+import { USER_PROMPT, SYSTEM_PROMPT } from '@/app/constants/prompts'
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
@@ -8,12 +9,28 @@ const openai = new OpenAI({
 export const runtime = 'edge'
 
 export async function POST(req: Response) {
-	const { messages } = await req.json()
+	const { url } = await req.json()
 	const response = await openai.chat.completions.create({
 		model: 'gpt-4-vision-preview',
-		stream: true,
-		messages,
+		messages: [
+			{
+				role: 'system',
+				content: SYSTEM_PROMPT,
+			},
+			{
+				role: 'user',
+				content: [
+					{ type: 'text', text: USER_PROMPT },
+					{
+						type: 'image_url',
+						image_url: {
+							url: url,
+						},
+					},
+				],
+			},
+		],
 	})
-	const stream = OpenAIStream(response)
+	console.log(response.choices[0])
 	return new StreamingTextResponse(stream)
 }
