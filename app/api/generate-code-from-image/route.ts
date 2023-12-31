@@ -12,6 +12,7 @@ export async function POST(req: Request) {
 	const { url } = await req.json()
 	const response = await openai.chat.completions.create({
 		model: 'gpt-4-vision-preview',
+		stream: true,
 		messages: [
 			{
 				role: 'system',

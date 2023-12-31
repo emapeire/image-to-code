@@ -2,7 +2,7 @@ import { Form } from '@/components/Form'
 
 export default function Home() {
 	const transformUrlToCode = async (url: string) => {
-		const res = fetch('/api/generate-code-from-image', {
+		const res = await fetch('/api/generate-code-from-image', {
 			method: 'POST',
 			body: JSON.stringify({ url }),
 			headers: {
