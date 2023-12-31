@@ -8,7 +8,7 @@ const openai = new OpenAI({
 
 export const runtime = 'edge'
 
-export async function POST(req: Response) {
+export async function POST(req: Request) {
 	const { url } = await req.json()
 	const response = await openai.chat.completions.create({
 		model: 'gpt-4-vision-preview',
@@ -23,14 +23,13 @@ export async function POST(req: Response) {
 					{ type: 'text', text: USER_PROMPT },
 					{
 						type: 'image_url',
-						image_url: {
-							url: url,
-						},
+						image_url: url,
 					},
 				],
 			},
 		],
 	})
-	console.log(response.choices[0])
+
+	const stream = OpenAIStream(response)
 	return new StreamingTextResponse(stream)
 }

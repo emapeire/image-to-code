@@ -1,6 +1,19 @@
 import { Form } from '@/components/Form'
 
 export default function Home() {
+	const transformUrlToCode = async (url: string) => {
+		const res = fetch('/api/generate-code-from-image', {
+			method: 'POST',
+			body: JSON.stringify({ url }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+		if (!res.ok || res.body === null) {
+			throw new Error('Something went wrong')
+		}
+	}
+
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
 			<aside className="flex flex-col justify-between min-h-screen p-4 bg-gray-900">
