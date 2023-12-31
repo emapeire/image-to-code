@@ -14,7 +14,12 @@ export default function Home() {
 				<footer className="text-center">
 					<p>
 						By{' '}
-						<a href="https://github.com/emapeire" target="_blank" rel="noopener noreferrer">
+						<a
+							href="https://github.com/emapeire"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-blue-400 hover:underline"
+						>
 							emapeire
 						</a>
 					</p>
