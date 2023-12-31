@@ -2,8 +2,13 @@
 
 import { Form } from '@/components/Form'
 import { transformUrlToCode } from '@/lib/transformUrlToCode'
+import { useState } from 'react'
+import { STEP, type Steps } from './constants/steps'
 
 export default function Home() {
+	const [result, setResult] = useState('')
+	const [step, setStep] = useState<Steps>(STEP.INITIAL)
+
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
 			<aside className="flex flex-col justify-between min-h-screen p-4 bg-gray-900">
