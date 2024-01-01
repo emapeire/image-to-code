@@ -18,8 +18,6 @@ export default function Home() {
 					<p className="text-sm opacity-75">Convert image to code</p>
 				</header>
 
-				<section className="text-center">Filters...</section>
-
 				<footer className="text-center">
 					<p className="border rounded-md bg-gray-900 py-2 mx-2">
 						By{' '}
