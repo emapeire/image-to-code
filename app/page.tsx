@@ -40,8 +40,11 @@ export default function Home() {
 					{step === STEP.INITIAL && <Form transformUrlToCode={transformUrlToCode} />}
 
 					{step === STEP.RESULT && (
-						<div className="rounded border border-gray-700">
-							<iframe srcDoc={result} className="w-full h-screen border-0" />
+						<div className="rounded flex flex-col gap-4">
+							<iframe srcDoc={result} className="w-full h-full rounded border-4 border-gray-700 aspect-video" />
+							<pre className="mt-10">
+								<code>{result}</code>
+							</pre>
 						</div>
 					)}
 				</section>
