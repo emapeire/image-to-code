@@ -8,3 +8,7 @@
 	overflow-y: auto;
 	height: 100vh;
 }
+
+.pre {
+	max-width: '100%';
+}
