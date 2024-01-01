@@ -1,3 +1,5 @@
+'use client'
+
 import { STEP, type Steps } from '@/app/constants/steps'
 import { useState } from 'react'
 

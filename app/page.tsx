@@ -4,7 +4,7 @@ import { Form } from '@/components/Form'
 import { useState } from 'react'
 import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
 
-export default async function Home() {
+export default function Home() {
 	const [result, setResult] = useState('')
 	const { transformUrlToCode } = useTransformUrlToCode()
 
