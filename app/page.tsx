@@ -1,16 +1,14 @@
 'use client'
 
 import { Form } from '@/components/Form'
-import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
+import { useTransformToCode } from '@/app/hooks/useTransformToCode'
 import { STEP } from './constants/steps'
 import { Spinner } from '@/components/Spinner'
 import styles from './page.module.css'
 import { DragAndDrop } from '@/components/DragAndDrop'
 
 export default function Home() {
-	const { transformUrlToCode, step, result } = useTransformUrlToCode()
-
-	const transformImageToCode = async (file: File) => {}
+	const { transformUrlToCode, transformImageToCode, step, result } = useTransformToCode()
 
 	return (
 		<div className="grid grid-cols-[260px_1fr]">
