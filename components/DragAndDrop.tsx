@@ -4,7 +4,8 @@ import { Dropzone, ExtFile } from '@files-ui/react'
 
 export function DragAndDrop({ transformImageToCode }: { transformImageToCode: (file: File) => Promise<void> }) {
 	const updateFiles = (files: ExtFile[]) => {
-		console.log(files)
+		const file = files[0].file
+		if (file != null) transformImageToCode(file)
 	}
 
 	return (
