@@ -33,5 +33,5 @@ export function useTransformUrlToCode() {
 		}
 	}
 
-	return { transformUrlToCode }
+	return { transformUrlToCode, step, setStep }
 }
