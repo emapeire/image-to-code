@@ -21,7 +21,7 @@ export default function Home() {
 				<section className="text-center">Filters...</section>
 
 				<footer className="text-center">
-					<p>
+					<p className="border rounded-md bg-gray-900 py-2">
 						By{' '}
 						<a
 							href="https://github.com/emapeire"
