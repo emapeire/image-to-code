@@ -9,7 +9,7 @@ export default function Home() {
 	const { transformUrlToCode, step, result } = useTransformUrlToCode()
 
 	return (
-		<div className="grid grid-cols-[400px_1fr]">
+		<div className="grid grid-cols-[260px_1fr]">
 			<aside className="flex flex-col justify-between min-h-screen p-4 bg-gray-900">
 				<header className="text-center">
 					<h2 className="text-3xl font-semibold">Image 2 code</h2>
