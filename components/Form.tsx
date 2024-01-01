@@ -4,7 +4,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 
-export function Form({ transformUrlToCode }: { transformUrlToCode: (url: string) => void }) {
+export function Form({ transformUrlToCode }: { transformUrlToCode: TransformProps }) {
 	return (
 		<form
 			className="flex flex-col gap-4"
