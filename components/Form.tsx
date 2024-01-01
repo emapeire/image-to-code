@@ -4,7 +4,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 
-export function Form({ transformUrlToCode }: { transformUrlToCode: (url: string) => void }) {
+export function Form({ transformUrlToCode }: { transformUrlToCode: (url: string) => Promise<void> }) {
 	return (
 		<form
 			className="flex flex-col gap-4"
@@ -16,7 +16,7 @@ export function Form({ transformUrlToCode }: { transformUrlToCode: (url: string)
 				transformUrlToCode(url.value)
 			}}
 		>
-			<Label htmlFor="url">Put your image url here</Label>
+			<Label htmlFor="url">Otherwise, paste your image url here 👇</Label>
 			<Input name="url" id="url" type="url" placeholder="https://example.com/image.png" />
 			<Button>Convert image to code</Button>
 		</form>

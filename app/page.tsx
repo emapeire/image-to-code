@@ -10,6 +10,8 @@ import { DragAndDrop } from '@/components/DragAndDrop'
 export default function Home() {
 	const { transformUrlToCode, step, result } = useTransformUrlToCode()
 
+	const transformImageToCode = async (file: File) => {}
+
 	return (
 		<div className="grid grid-cols-[260px_1fr]">
 			<aside className={`${styles.aside} flex flex-col justify-between min-h-screen p-4`}>
@@ -41,7 +43,7 @@ export default function Home() {
 
 					{step === STEP.INITIAL && (
 						<div className="flex flex-col gap-12">
-							<DragAndDrop />
+							<DragAndDrop transformImageToCode={transformImageToCode} />
 							<Form transformUrlToCode={transformUrlToCode} />
 						</div>
 					)}
