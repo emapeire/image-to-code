@@ -3,6 +3,8 @@
 import { Form } from '@/components/Form'
 import { useState } from 'react'
 import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
+import { STEP } from './constants/steps'
+import { Spinner } from '@/components/Spinner'
 
 export default function Home() {
 	const [result, setResult] = useState('')
@@ -34,7 +36,8 @@ export default function Home() {
 			</aside>
 
 			<main className="">
-				<section className="max-w-2xl mx-auto p-10">
+				<section className="max-w-5xl w-full mx-auto p-10">
+					{STEP.LOADING && <Spinner />}
 					<Form transformUrlToCode={transformUrlToCode} />
 				</section>
 			</main>
