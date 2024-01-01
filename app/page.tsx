@@ -6,7 +6,7 @@ import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
 
 export default function Home() {
 	const [result, setResult] = useState('')
-	const { transformUrlToCode } = useTransformUrlToCode()
+	const { transformUrlToCode, step, setStep } = useTransformUrlToCode()
 
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
