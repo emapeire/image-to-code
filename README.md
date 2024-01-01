@@ -26,6 +26,8 @@ The GPT-4-Vision-Preview model generates code from images. It's trained on a dat
 
 2. Install the dependencies with `npm install`
 
-3. Run the server with `npm run dev`
+3. You have to create a `.env` file with your **OPENAI_API_KEY** compatible with **gpt-4-vision-preview** model.
 
-4. Open `http://localhost:3000` in your browser
+4. Run the server with `npm run dev`
+
+5. Open `http://localhost:3000` in your browser
