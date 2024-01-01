@@ -4,7 +4,7 @@ import { useState } from 'react'
 export function useTransformUrlToCode() {
 	const [step, setStep] = useState<Steps>(STEP.INITIAL)
 
-	const transformUrlToCode = async ({ url }: { url: string }) => {
+	const transformUrlToCode = async (url: string) => {
 		setStep(STEP.LOADING)
 		const res = await fetch('/api/generate-code-from-image', {
 			method: 'POST',

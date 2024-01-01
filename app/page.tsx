@@ -1,3 +1,5 @@
+'use client'
+
 import { Form } from '@/components/Form'
 import { useState } from 'react'
 import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
