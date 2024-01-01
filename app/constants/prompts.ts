@@ -24,5 +24,5 @@ In terms of libraries,
 - You can use Google Fonts
 - Font Awesome for icons: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
 
-Return fisrt the background color in hexademical format, put a ||| separator, and then the full code in <html></html> tags.
+Return only the full code in <html></html> tags.
 Do not include markdown "\`\`\`" or "\`\`\`html" at the start or end.`

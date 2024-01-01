@@ -10,8 +10,6 @@ import { DragAndDrop } from '@/components/DragAndDrop'
 export default function Home() {
 	const { transformUrlToCode, transformImageToCode, step, result } = useTransformToCode()
 
-	const [background, html = ''] = result.split('|||')
-
 	return (
 		<div className="grid grid-cols-[260px_1fr]">
 			<aside className={`${styles.aside} flex flex-col justify-between min-h-screen p-4`}>
@@ -50,14 +48,9 @@ export default function Home() {
 
 					{step === STEP.RESULT && (
 						<div className="rounded-md flex flex-col gap-4">
-							<div
-								className="w-full h-full rounded-md border-4 border-gray-700 aspect-video"
-								style={{ backgroundColor: `#${background ? background.trim() : 'fff'}` }}
-							>
-								<iframe srcDoc={html} className="w-full h-full" />
-							</div>
+							<iframe srcDoc={result} className="w-full h-full rounded-md border-4 border-gray-700 aspect-video" />
 							<pre className={`${styles.pre} mt-10 overflow-x-auto`}>
-								<code>{html}</code>
+								<code>{result}</code>
 							</pre>
 						</div>
 					)}
