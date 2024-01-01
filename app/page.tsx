@@ -1,11 +1,10 @@
-'use client'
-
 import { Form } from '@/components/Form'
 import { useState } from 'react'
-import { STEP, type Steps } from './constants/steps'
+import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
 
-export default function Home() {
+export default async function Home() {
 	const [result, setResult] = useState('')
+	const { transformUrlToCode } = useTransformUrlToCode()
 
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
