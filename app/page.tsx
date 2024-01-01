@@ -10,6 +10,8 @@ import { DragAndDrop } from '@/components/DragAndDrop'
 export default function Home() {
 	const { transformUrlToCode, transformImageToCode, step, result } = useTransformToCode()
 
+	const [background, html = ''] = result.split('|||')
+
 	return (
 		<div className="grid grid-cols-[260px_1fr]">
 			<aside className={`${styles.aside} flex flex-col justify-between min-h-screen p-4`}>
@@ -21,7 +23,7 @@ export default function Home() {
 				<section className="text-center">Filters...</section>
 
 				<footer className="text-center">
-					<p className="border rounded-md bg-gray-900 py-2">
+					<p className="border rounded-md bg-gray-900 py-2 mx-2">
 						By{' '}
 						<a
 							href="https://github.com/emapeire"
@@ -47,10 +49,15 @@ export default function Home() {
 					)}
 
 					{step === STEP.RESULT && (
-						<div className="rounded flex flex-col gap-4">
-							<iframe srcDoc={result} className="w-full h-full rounded border-4 border-gray-700 aspect-video" />
+						<div className="rounded-md flex flex-col gap-4">
+							<div
+								className="w-full h-full rounded-md border-4 border-gray-700 aspect-video"
+								style={{ backgroundColor: `#${background ? background.trim() : 'fff'}` }}
+							>
+								<iframe srcDoc={html} className="w-full h-full" />
+							</div>
 							<pre className={`${styles.pre} mt-10 overflow-x-auto`}>
-								<code>{result}</code>
+								<code>{html}</code>
 							</pre>
 						</div>
 					)}
