@@ -1,7 +1,7 @@
 export const STEP = {
 	INITIAL: 'INITIAL',
 	LOADING: 'LOADING',
-	SUCCESS: 'SUCCESS',
+	RESULT: 'RESULT',
 	ERROR: 'ERROR',
 } as const
 

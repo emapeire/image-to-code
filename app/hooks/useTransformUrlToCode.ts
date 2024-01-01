@@ -4,6 +4,7 @@ import { STEP, type Steps } from '@/app/constants/steps'
 import { useState } from 'react'
 
 export function useTransformUrlToCode() {
+	const [result, setResult] = useState('')
 	const [step, setStep] = useState<Steps>(STEP.INITIAL)
 
 	const transformUrlToCode = async (url: string) => {
@@ -20,7 +21,7 @@ export function useTransformUrlToCode() {
 			throw new Error('Something went wrong')
 		}
 
-		setStep(STEP.SUCCESS)
+		setStep(STEP.RESULT)
 
 		const reader = res.body.getReader()
 		const decoder = new TextDecoder('utf-8')
@@ -28,10 +29,10 @@ export function useTransformUrlToCode() {
 		while (true) {
 			const { done, value } = await reader.read()
 			const chunk = decoder.decode(value)
-			console.log(chunk)
+			setResult((prev) => prev + chunk)
 			if (done) break
 		}
 	}
 
-	return { transformUrlToCode, step, setStep }
+	return { transformUrlToCode, step, result }
 }

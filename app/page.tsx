@@ -1,14 +1,12 @@
 'use client'
 
 import { Form } from '@/components/Form'
-import { useState } from 'react'
 import { useTransformUrlToCode } from '@/app/hooks/useTransformUrlToCode'
 import { STEP } from './constants/steps'
 import { Spinner } from '@/components/Spinner'
 
 export default function Home() {
-	const [result, setResult] = useState('')
-	const { transformUrlToCode, step, setStep } = useTransformUrlToCode()
+	const { transformUrlToCode, step, result } = useTransformUrlToCode()
 
 	return (
 		<div className="grid grid-cols-[400px_1fr]">
@@ -37,8 +35,15 @@ export default function Home() {
 
 			<main className="">
 				<section className="max-w-5xl w-full mx-auto p-10">
-					{STEP.LOADING && <Spinner />}
-					<Form transformUrlToCode={transformUrlToCode} />
+					{step === STEP.LOADING && <Spinner />}
+
+					{step === STEP.INITIAL && <Form transformUrlToCode={transformUrlToCode} />}
+
+					{step === STEP.RESULT && (
+						<div className="rounded border border-gray-700">
+							<iframe srcDoc={result} className="w-full h-screen border-0" />
+						</div>
+					)}
 				</section>
 			</main>
 		</div>
