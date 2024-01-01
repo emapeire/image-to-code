@@ -1,6 +1,7 @@
 'use client'
 
 import { STEP, type Steps } from '@/app/constants/steps'
+import { streamReader } from '@/lib/streamReader'
 import { useState } from 'react'
 
 export function useTransformUrlToCode() {
@@ -16,21 +17,15 @@ export function useTransformUrlToCode() {
 				'Content-Type': 'application/json',
 			},
 		})
-		if (!res.ok || res.body === null) {
+		if (!res.ok || res.body == null) {
 			setStep(STEP.ERROR)
 			throw new Error('Something went wrong')
 		}
 
 		setStep(STEP.RESULT)
 
-		const reader = res.body.getReader()
-		const decoder = new TextDecoder('utf-8')
-
-		while (true) {
-			const { done, value } = await reader.read()
-			const chunk = decoder.decode(value)
+		for await (const chunk of streamReader(res)) {
 			setResult((prev) => prev + chunk)
-			if (done) break
 		}
 	}
 
